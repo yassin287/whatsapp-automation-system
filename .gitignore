@@ -35,5 +35,4 @@ ENV/
 whatsapp_bot_profile/
 config.json
 *.log
-screenshots/
 *.db 
