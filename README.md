@@ -2,7 +2,7 @@
 
 A powerful WhatsApp automation system with a modern web interface, message scheduling, and comprehensive message management.
 
-![WhatsApp Automation System](screenshots/dashboard.png)
+![WhatsApp Automation System](screenshots/dashboard.png.jpeg)
 
 ## Features
 
