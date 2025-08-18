@@ -1,155 +1,299 @@
-# WhatsApp Automation System
+# WhatsApp OTP Service
 
-A powerful WhatsApp automation system with a modern web interface, message scheduling, and comprehensive message management.
+A professional 24/7 WhatsApp OTP (One-Time Password) service that provides a REST API for sending verification codes via WhatsApp. Perfect for businesses needing automated OTP delivery through WhatsApp messaging.
 
-![WhatsApp Automation System](screenshots/dashboard.png)
+## 🚀 Features
 
-## Features
+- **24/7 Operation**: Designed to run continuously on VPS servers
+- **RESTful API**: Simple HTTP API for OTP requests
+- **Queue Processing**: Handles multiple OTP requests efficiently
+- **Auto-Retry**: Automatic retry mechanism for failed deliveries
+- **Monitoring**: Built-in statistics and health monitoring
+- **VPS Ready**: Optimized for headless server deployment
+- **Rate Limiting**: Configurable rate limiting to prevent abuse
+- **Logging**: Comprehensive logging for debugging and monitoring
 
-### Message Management
-- **Template System**: Create and manage message templates with variable support
-- **Recipient Management**: Organize contacts with custom names and phone numbers
-- **Message History**: Track all sent messages with status indicators
-- **Statistics Dashboard**: Monitor message success rates and delivery status
+## 📋 Requirements
 
-### Smart Scheduling
-- **One-Time Messages**: Schedule messages for specific dates and times
-- **Recurring Messages**: Set up daily, weekly, or monthly recurring messages
-- **Schedule Management**: View, edit, and delete scheduled messages
-- **Active/Inactive Toggle**: Enable or disable schedules without deletion
+- Python 3.8+
+- Microsoft Edge Browser
+- EdgeDriver
+- Flask
+- Selenium
+- Valid WhatsApp account
 
-### System Features
-- **Dark Theme UI**: Modern, eye-friendly interface
-- **Responsive Design**: Works on desktop and mobile devices
-- **Real-time Status Updates**: Monitor message delivery in real-time
-- **Error Handling**: Robust error handling with detailed logging
+## 🛠️ Quick Setup (Local Development)
 
-### Technical Highlights
-- **Selenium Integration**: Automated WhatsApp Web interaction
-- **Flask Backend**: Fast and reliable Python web framework
-- **Schedule Library**: Precise timing for scheduled messages
-- **Edge WebDriver**: Modern browser automation
+1. **Clone and Install Dependencies**
+```bash
+git clone <your-repo>
+cd whatsapp-automation
+pip install -r requirements.txt
+```
 
-## Tech Stack
+2. **Configure Service**
+Edit `config.json` to customize settings:
+```json
+{
+    "service_config": {
+        "auto_start_bot": true,
+        "otp_message_template": "Your OTP verification code is: {otp_code}",
+        "rate_limit_per_minute": 60,
+        "max_retries": 3,
+        "retry_delay": 5,
+        "headless_mode": false
+    }
+}
+```
 
-- **Backend**: Python, Flask
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap
-- **Automation**: Selenium, Edge WebDriver
-- **Scheduling**: Python Schedule library
-- **Data Storage**: JSON-based configuration
+3. **Start the Service**
+```bash
+python app.py
+```
 
-## Installation
+4. **First Time Setup**
+- Open http://localhost:5000 in your browser
+- Click "Start Bot" to initialize WhatsApp connection
+- Scan the QR code with your WhatsApp mobile app
+- Service is now ready to receive API requests
 
-### Prerequisites
-- Python 3.8 or higher
-- Microsoft Edge browser
-- Git
+## 🌐 VPS Deployment (Production)
 
-### Setup Steps
+### Automated Setup
+Use the provided deployment script for Ubuntu/Debian servers:
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yassin287/whatsapp-automation-system.git
-   cd whatsapp-automation-system
-   ```
+```bash
+chmod +x deploy-vps.sh
+./deploy-vps.sh
+```
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   ```
+### Manual Setup Steps
 
-3. **Activate the virtual environment**
-   - Windows:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - macOS/Linux:
-     ```bash
-     source venv/bin/activate
-     ```
+1. **Install System Dependencies**
+```bash
+# Update system
+sudo apt update && sudo apt upgrade -y
 
-4. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install Python and tools
+sudo apt install -y python3 python3-pip python3-venv
 
-5. **Run the application**
-   ```bash
-   python app.py
-   ```
+# Install Microsoft Edge
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+sudo apt update && sudo apt install -y microsoft-edge-stable
+```
 
-6. **Access the web interface**
-   Open your browser and navigate to `http://localhost:5000`
+2. **Setup Application**
+```bash
+# Create app directory
+sudo mkdir -p /opt/whatsapp-otp
+sudo chown $USER:$USER /opt/whatsapp-otp
+cd /opt/whatsapp-otp
 
-## Usage Guide
+# Upload your files and create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-### Starting the Bot
-1. Click the "Start Bot" button in the dashboard
-2. Scan the QR code with your WhatsApp mobile app
-3. Wait for the connection to establish
+3. **Create Systemd Service**
+```bash
+sudo cp whatsapp-otp.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable whatsapp-otp
+sudo systemctl start whatsapp-otp
+```
 
-### Adding Recipients
-1. Navigate to the "Contacts" tab
-2. Click "Add Recipient"
-3. Enter the recipient's name and phone number
-4. Click "Save"
+4. **Setup Nginx Reverse Proxy**
+```bash
+sudo apt install -y nginx
+# Configure nginx (see deploy-vps.sh for config)
+sudo systemctl restart nginx
+```
 
-### Creating Templates
-1. Navigate to the "Templates" tab
-2. Click "Add Template"
-3. Enter a template name and content
-4. Use `{name}` as a placeholder for recipient names
-5. Click "Save"
+## 📡 API Usage
 
-### Scheduling Messages
-1. Navigate to the "Schedule" tab
-2. Click "Schedule Message"
-3. Select a recipient and template
-4. Choose a schedule type (one-time, daily, weekly, monthly)
-5. Set the date and time
-6. Click "Schedule"
+### Send OTP
+```bash
+curl -X POST http://your-domain.com/api/send-otp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phone_number": "1234567890",
+    "otp_code": "123456"
+  }'
+```
 
-### Sending Messages
-1. Navigate to the "Messages" tab
-2. Select a recipient and template
-3. Click "Send Message"
+**Response:**
+```json
+{
+    "status": "success",
+    "message": "OTP request queued for processing",
+    "request_id": "uuid-string"
+}
+```
 
-## Configuration
+### Check OTP Status
+```bash
+curl http://your-domain.com/api/otp-status/your-request-id
+```
 
-The system uses a `config.json` file to store:
-- Recipients
-- Message templates
-- Scheduled messages
-- Message history
-- Statistics
+### Get Service Statistics
+```bash
+curl http://your-domain.com/api/stats
+```
 
-This file is automatically created when you first run the application.
+## 🧪 Testing
 
-## Contributing
+Run the test suite to verify everything is working:
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```bash
+python test_api.py
+```
+
+The test script will:
+- Check service health
+- Test OTP sending
+- Verify status checking
+- Test error handling
+- Display statistics
+
+## 🔧 Configuration Options
+
+### Service Configuration (`config.json`)
+
+```json
+{
+    "service_config": {
+        "auto_start_bot": true,              // Auto-start bot on service startup
+        "otp_message_template": "Your OTP verification code is: {otp_code}",
+        "rate_limit_per_minute": 60,         // Max requests per minute
+        "max_retries": 3,                    // Retry attempts for failed sends
+        "retry_delay": 5,                    // Delay between retries (seconds)
+        "headless_mode": false,              // Run browser in headless mode
+        "phone_number_prefix": "20"          // Country code prefix
+    }
+}
+```
+
+### Environment Variables
+
+- `FLASK_ENV`: Set to `production` for production deployment
+- `PYTHONUNBUFFERED`: Set to `1` for better logging in containers
+
+## 📊 Monitoring & Management
+
+### Service Management (VPS)
+```bash
+# Start service
+whatsapp-otp-ctl start
+
+# Stop service
+whatsapp-otp-ctl stop
+
+# Restart service
+whatsapp-otp-ctl restart
+
+# Check status
+whatsapp-otp-ctl status
+
+# View logs
+whatsapp-otp-ctl logs
+```
+
+### Health Monitoring
+- **API Endpoint**: `GET /api/stats` for service statistics
+- **Logs**: Available in `whatsapp_otp_service.log`
+- **System Logs**: `journalctl -u whatsapp-otp -f`
+
+### Key Metrics
+- Total messages sent
+- Success/failure rates
+- Queue size
+- Bot status
+- Service uptime
+
+## 🔒 Security Considerations
+
+1. **API Authentication**: Implement API keys or JWT tokens for production
+2. **Rate Limiting**: Configure appropriate rate limits
+3. **Firewall**: Restrict access to necessary ports only
+4. **HTTPS**: Use SSL certificates in production
+5. **Monitoring**: Set up alerting for failures
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Bot Not Starting**
+- Check WhatsApp Web session
+- Re-scan QR code if needed
+- Verify Edge browser installation
+
+**Messages Not Sending**
+- Verify phone number format
+- Check WhatsApp connection status
+- Review bot logs for errors
+
+**High Memory Usage**
+- Restart browser session periodically
+- Enable headless mode for better performance
+- Monitor system resources
+
+**Queue Backup**
+- Check bot status
+- Verify network connectivity
+- Review error logs
+
+### Debug Mode
+For debugging, set `debug=True` in `app.py` and check detailed logs.
+
+## 📁 Project Structure
+
+```
+whatsapp-automation/
+├── app.py                    # Main Flask application
+├── whatsapp_auto.py         # WhatsApp bot implementation
+├── wsgi.py                  # Production WSGI entry point
+├── config.json              # Service configuration
+├── requirements.txt         # Python dependencies
+├── deploy-vps.sh           # VPS deployment script
+├── whatsapp-otp.service    # Systemd service file
+├── test_api.py             # API testing script
+├── API_DOCUMENTATION.md    # Detailed API docs
+├── templates/
+│   └── index.html          # Web interface
+└── whatsapp_bot_profile/   # Browser profile data
+```
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
 
-## License
+## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+## ⚠️ Disclaimer
 
-- [Selenium](https://www.selenium.dev/) for web automation
-- [Flask](https://flask.palletsprojects.com/) for the web framework
-- [Bootstrap](https://getbootstrap.com/) for the UI components
-- [Schedule](https://schedule.readthedocs.io/) for task scheduling
+This tool is for legitimate business use only. Ensure compliance with:
+- WhatsApp Terms of Service
+- Local telecommunications regulations
+- Data protection laws (GDPR, etc.)
+- Anti-spam regulations
 
-## Support
+## 📞 Support
 
-If you encounter any issues or have questions, please open an issue in the GitHub repository.
+For issues and questions:
+1. Check the troubleshooting section
+2. Review the logs
+3. Create an issue on GitHub
+4. Contact support
 
 ---
 
-**Note**: This project is for educational purposes only. Please use responsibly and in accordance with WhatsApp's terms of service. 
+**Happy messaging! 🚀📱**

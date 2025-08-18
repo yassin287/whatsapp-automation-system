@@ -1,0 +1,299 @@
+{
+    "recipients": [
+        {
+            "id": 0,
+            "name": "Ahmed Flefl",
+            "phone": "201014193810",
+            "notes": "manager"
+        },
+        {
+            "id": 1,
+            "name": "testing",
+            "phone": "201067893250",
+            "notes": "my other number"
+        }
+    ],
+    "message_templates": [
+        {
+            "id": 0,
+            "name": "OTP Verification",
+            "content": "Your OTP verification code is: {otp_code}"
+        },
+        {
+            "id": 1,
+            "name": "OTP with Company Name",
+            "content": "Your verification code for YourCompany is: {otp_code}. Do not share this code with anyone."
+        },
+        {
+            "id": 2,
+            "name": "late exuse",
+            "content": "I'm sorry for being late there was a crazy traffic jam"
+        },
+        {
+            "id": 3,
+            "name": "good morning",
+            "content": "GoodMorning, want a cup of tea?"
+        }
+    ],
+    "scheduled_messages": [
+        {
+            "id": "6fbccd2c-b069-4536-8eac-98e09d729e5a",
+            "recipient_id": 0,
+            "template_id": 0,
+            "schedule_type": "one_time",
+            "status": "active",
+            "created_at": "2025-04-02T02:31:54.754721",
+            "datetime": "2025-04-02T02:32"
+        },
+        {
+            "id": "9c5acc8b-5e7d-473a-a665-d2397d395c05",
+            "recipient_id": 0,
+            "template_id": 0,
+            "schedule_type": "one_time",
+            "status": "active",
+            "created_at": "2025-04-02T02:33:01.802280",
+            "datetime": "2025-04-02T02:33"
+        },
+        {
+            "id": "606bcda8-ea3b-4cd9-872b-7280aaef3e22",
+            "recipient_id": 0,
+            "template_id": 0,
+            "schedule_type": "one_time",
+            "status": "active",
+            "created_at": "2025-04-02T02:33:22.537130",
+            "datetime": "2025-04-02T02:34"
+        },
+        {
+            "id": "3ba74fbc-52df-4660-b643-fa6c04c361cc",
+            "recipient_id": 0,
+            "template_id": 0,
+            "schedule_type": "one_time",
+            "status": "active",
+            "created_at": "2025-04-02T02:39:53.116475",
+            "datetime": "2025-04-02T02:40"
+        },
+        {
+            "id": "3339e8e4-2f0e-4b7c-891d-7584cff353fe",
+            "recipient_id": 1,
+            "template_id": 1,
+            "schedule_type": "one_time",
+            "status": "active",
+            "created_at": "2025-04-03T01:44:44.512098",
+            "datetime": "2025-04-03T01:45"
+        }
+    ],
+    "message_history": [
+        {
+            "id": 0,
+            "recipient": "Quick Send",
+            "phone": "201014193810",
+            "content": "another test",
+            "timestamp": "2025-04-02 02:11:03",
+            "status": "pending"
+        },
+        {
+            "id": 1,
+            "recipient": "Quick Send",
+            "phone": "201014193810",
+            "content": "another test",
+            "timestamp": "2025-04-02 02:11:17",
+            "status": "success"
+        },
+        {
+            "id": 2,
+            "recipient": "Quick Send",
+            "phone": "201014193810",
+            "content": "Hello Ahmed!",
+            "timestamp": "2025-04-02 02:15:22",
+            "status": "success"
+        },
+        {
+            "id": 3,
+            "recipient": "Ahmed Flefl",
+            "phone": "201014193810",
+            "content": "I'm sorry for being late there was a crazy traffic jam",
+            "timestamp": "2025-04-02 02:40:39",
+            "status": "success"
+        },
+        {
+            "id": 4,
+            "recipient": "Quick Send",
+            "phone": "201067893250",
+            "content": "test message",
+            "timestamp": "2025-04-03 01:43:06",
+            "status": "success"
+        },
+        {
+            "id": 5,
+            "recipient": "testing",
+            "phone": "201067893250",
+            "content": "GoodMorning, want a cup of tea?",
+            "timestamp": "2025-04-03 01:45:38",
+            "status": "success"
+        }
+    ],
+    "otp_history": [
+        {
+            "request_id": "418baa6b-aaad-4442-8a2c-1406fd8ba9a6",
+            "phone_number": "201067893250",
+            "otp_code": "123456",
+            "message": "Your OTP verification code is: 123456",
+            "timestamp": "2025-08-19 00:01:18",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "25ac5e85-9359-4a38-b451-94c44c0bc969",
+            "phone_number": "201067893250",
+            "otp_code": "1238856",
+            "message": "Your OTP verification code is: 1238856",
+            "timestamp": "2025-08-19 00:02:39",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "4dfe01f3-1a47-4217-97bc-685b929c1721",
+            "phone_number": "201067893250",
+            "otp_code": "1238856",
+            "message": "Your OTP verification code is: 1238856",
+            "timestamp": "2025-08-19 00:05:26",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "73239168-ce5e-4da7-961e-1aa2986ea76f",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:09:41",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "cf8fb175-c328-46dc-9409-60011551837f",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:10:08",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "9d142a5e-5701-4b80-9c10-c2b4cc0b86cf",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:11:52",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "02e5e79e-a19b-4f82-bacf-e7f5da22a2b4",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:12:58",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "21ef90d1-f590-4014-b26f-707b046fbaf4",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:16:15",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "bf64cd83-2ac7-4514-bf35-f01e0010bfb3",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:17:28",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "e72fd6ba-1930-4742-8498-8243527a1b5b",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:20:56",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "47dc6de1-a264-4455-b187-cd67fc343502",
+            "phone_number": "201067893250",
+            "otp_code": "FAST123",
+            "message": "Your OTP verification code is: FAST123",
+            "timestamp": "2025-08-19 00:27:01",
+            "status": "success",
+            "retries": 1
+        },
+        {
+            "request_id": "d3622580-6a20-44bd-9cf6-b3fe53042e35",
+            "phone_number": "201067893250",
+            "otp_code": "987589",
+            "message": "Your OTP verification code is: 987589",
+            "timestamp": "2025-08-19 00:44:55",
+            "status": "success",
+            "retries": 1
+        },
+        {
+            "request_id": "e5c72742-fa52-4b94-ac6c-60a4b918d4d8",
+            "phone_number": "201067893250",
+            "otp_code": "987589",
+            "message": "Your OTP verification code is: 987589",
+            "timestamp": "2025-08-19 00:45:12",
+            "status": "success",
+            "retries": 0
+        },
+        {
+            "request_id": "3a058a43-4af8-4844-af2c-9c3591729739",
+            "phone_number": "201067893250",
+            "otp_code": "987589",
+            "message": "Your OTP verification code is: 987589",
+            "timestamp": "2025-08-19 00:52:27",
+            "status": "success",
+            "retries": 2
+        },
+        {
+            "request_id": "08c5545d-625f-4efb-9ad1-28c882811334",
+            "phone_number": "201067893250",
+            "otp_code": "987589",
+            "message": "Your OTP verification code is: 987589",
+            "timestamp": "2025-08-19 01:07:28",
+            "status": "success",
+            "retries": 1
+        },
+        {
+            "request_id": "f4c8f027-944a-4ff7-8d58-e1bcbb9b6aaf",
+            "phone_number": "201067893250",
+            "otp_code": "987589",
+            "message": "Your OTP verification code is: 987589",
+            "timestamp": "2025-08-19 01:08:40",
+            "status": "success",
+            "retries": 0
+        }
+    ],
+    "service_config": {
+        "auto_start_bot": true,
+        "otp_message_template": "Your OTP verification code is: {otp_code}",
+        "rate_limit_per_minute": 60,
+        "max_retries": 3,
+        "retry_delay": 5,
+        "headless_mode": false,
+        "phone_number_prefix": "20"
+    },
+    "stats": {
+        "total_messages": 22,
+        "successful": 21,
+        "failed": 0,
+        "pending": 1,
+        "otp_requests": 16,
+        "otp_successful": 16,
+        "otp_failed": 0
+    }
+}

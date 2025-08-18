@@ -1,38 +1,54 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+# WhatsApp Bot Browser Profile (contains user session data)
+whatsapp_bot_profile/
 
-# Virtual Environment
-venv/
+# Cache and temp files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 env/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Screenshots
+screenshots/
+
+# Video recordings
+*.mp4
+
+# Virtual environments
+venv/
 ENV/
 
-# IDE
-.idea/
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE Files
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
 
-# Project specific
-whatsapp_bot_profile/
-config.json
-*.log
-*.db 
+# Local config files that might contain sensitive data
+config_local.json
+.env

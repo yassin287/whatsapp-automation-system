@@ -1,0 +1,22 @@
+[Unit]
+Description=WhatsApp OTP Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/path/to/your/whatsapp-automation
+Environment=PYTHONPATH=/path/to/your/whatsapp-automation
+ExecStart=/usr/bin/python3 /path/to/your/whatsapp-automation/app.py
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=whatsapp-otp
+
+# Environment variables for production
+Environment=FLASK_ENV=production
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
